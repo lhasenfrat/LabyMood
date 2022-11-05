@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        Application.LoadLevel("SampleScene");
+        SceneManager.LoadScene("mazegeneration");
     }
 
     public void QuitGame()
