@@ -36,7 +36,7 @@ public class TeleportationManager : MonoBehaviour
         {
             return;
         }
-        if(!interactor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        if(!interactor.TryGetCurrent3DRaycastHit(out RaycastHit hit) || hit.collider.gameObject.GetComponent<TeleportationArea>() == null)
         {
             interactor.enabled = false;
             _isActive = false;
