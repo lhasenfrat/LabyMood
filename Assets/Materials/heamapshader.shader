@@ -1,57 +1,61 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Unlit/heamapshader"
 {
-    Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
+    Properties {
+        _HeatTex ("Texture", 2D) = "white" {}
     }
-    SubShader
-    {
-        Tags { "RenderType"="Opaque" }
-        LOD 100
-
-        Pass
-        {
+    SubShader {
+        Tags {"Queue"="Transparent"}
+        Blend SrcAlpha OneMinusSrcAlpha // Alpha blend
+        Pass {
             CGPROGRAM
-            #pragma vertex vert
+            #pragma vertex vert             
             #pragma fragment frag
-            // make fog work
-            #pragma multi_compile_fog
-
-            #include "UnityCG.cginc"
-
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
+            struct vertInput {
+                float4 pos : POSITION;
+            };  
+            struct vertOutput {
+                float4 pos : POSITION;
+                fixed3 worldPos : TEXCOORD1;
             };
-
-            struct v2f
-            {
-                float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
-                float4 vertex : SV_POSITION;
-            };
-
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                UNITY_TRANSFER_FOG(o,o.vertex);
+            vertOutput vert(vertInput input) {
+                vertOutput o;
+                o.pos = UnityObjectToClipPos(input.pos);
+                o.worldPos = mul(unity_ObjectToWorld, input.pos).xyz;
                 return o;
             }
+            uniform int _Points_Length = 1;
+            uniform float3 _Points [1];        // (x, y, z) = position
+            uniform float2 _Properties [1];    // x = radius, y = intensity
+            
 
-            fixed4 frag (v2f i) : SV_Target
+            void initialize()
             {
-                // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
-                col = fixed4(1,0,0,1);
-                return col;
+                _Points[0] = float3(0,0,0);
+                _Properties[0] =  float2(20,10);
+
+            }
+            sampler2D _HeatTex;
+            half4 frag(vertOutput output) : COLOR {
+                // Loops over all the points
+                half h = 0;
+                for (int i = 0; i < _Points_Length; i ++)
+                {
+                    // Calculates the contribution of each point
+                    half di = distance(output.worldPos, _Points[i].xyz);
+                    half ri = _Properties[i].x;
+                    half hi = 1 - saturate(di / ri);
+                    h += hi * _Properties[i].y;
+                }
+                // Converts (0-1) according to the heat texture
+                h = saturate(h);
+                half4 color = tex2D(_HeatTex, fixed2(h, 0.5));
+                return color;
             }
             ENDCG
         }
-    }
+    } 
+    Fallback "Diffuse"
 }
