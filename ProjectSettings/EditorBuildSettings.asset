@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: bb80a8e2fa32d4e4ca20820a6033645c
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/SampleScene stressful.unity
     guid: b0d707f92154c1f4b957263965e65f7a
   - enabled: 0
     path: Assets/Scenes/mazegeneration.unity
