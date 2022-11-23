@@ -17,12 +17,13 @@ public class positionRecorder : MonoBehaviour
     bool rightA;
     void Start()
     {
-       
 
-        var csvFileName = $"{id}.csv";
+        id=PlayerPrefs.GetInt("currentid");
+        string condition = PlayerPrefs.GetString("condition");
+        var csvFileName = $"{id}-{condition}.csv";
         string basePath = Path.Combine(Application.persistentDataPath, csvFileName);
         writer = new StreamWriter(basePath);
-        writer.WriteLine("id;time;xpos;zpos");
+        writer.WriteLine("time;xpos;zpos");
         
     }
 
@@ -45,7 +46,7 @@ public class positionRecorder : MonoBehaviour
         }
         if (available)
         {
-            writer.WriteLine($"{id};{Time.timeSinceLevelLoad};{transform.position.x};{transform.position.z}");
+            writer.WriteLine($"{Time.timeSinceLevelLoad};{transform.position.x};{transform.position.z}");
 
         }
     }

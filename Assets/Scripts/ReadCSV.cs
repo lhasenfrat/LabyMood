@@ -76,6 +76,6 @@ public class ReadCSV : MonoBehaviour
     Vector3 CreateVector3(String line)
     {
         String[] currentline = (line.Trim()).Split(";"[0]);
-        return new Vector3(float.Parse(currentline[2]), 0,float.Parse(currentline[3]));
+        return new Vector3(float.Parse(currentline[1]), 0,float.Parse(currentline[2]));
     }
 }
