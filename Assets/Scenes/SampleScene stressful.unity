@@ -981,7 +981,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 300
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   gain: 0
   useInvSqr: 0
   near: 1
-  far: 300
+  far: 30
   volumetricRadius: 0
   reverbSend: 0
   enableRfl: 0
