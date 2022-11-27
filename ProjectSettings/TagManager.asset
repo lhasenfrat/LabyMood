@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RoomLight
   - Wall
+  - player
   layers:
   - Default
   - TransparentFX

@@ -10,17 +10,28 @@ public class ReadCSV : MonoBehaviour
     [SerializeField] private Material material;
     [SerializeField] private string path;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private GameObject Maze;
+
     String[] lineData;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         var fileData = System.IO.File.ReadAllText(path);
-        lineData  = fileData.Split("\n"[0]);
+        lineData = fileData.Split("\n"[0]);
+        LoadMaze();
+    }
+    void Start()
+    {
         ComputeMatrix();
         Draw();
     }
 
+    void LoadMaze()
+    {
+        PlayerPrefs.SetInt("seed", Int32.Parse(path.Split("-")[2].Split(".")[0]));
 
+    }
     void ComputeMatrix()
     {
         List<Vector4> matrixlist = new List<Vector4>();

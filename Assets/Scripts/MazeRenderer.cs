@@ -6,8 +6,10 @@ public class MazeRenderer : MonoBehaviour
 {
     [SerializeField] private Transform wallprefab;
     [SerializeField] private float size = 1f;
+    [SerializeField] private float couloirsize = 1f;
+
     [SerializeField] private int width = 10;
-    [SerializeField] private int heigth = 10;// Start is called before the first frame update
+    [SerializeField] private int heigth = 10;
     [SerializeField] private int seed = 0;
     [SerializeField] private int StartPosition=0;
     [SerializeField] private int EndPosition=0;
@@ -15,7 +17,7 @@ public class MazeRenderer : MonoBehaviour
 
     void Start()
     {
-        
+        seed = PlayerPrefs.GetInt("seed");
         var maze = MazeGeneration.Generate(width, heigth,seed);
         maze[0, StartPosition] &= ~WallState.LEFT;
         maze[width-1, EndPosition] &= ~WallState.RIGHT;
@@ -30,7 +32,7 @@ public class MazeRenderer : MonoBehaviour
             for(int j = 0; j < heigth; j++)
             {
                 var cell = maze[i, j];
-                var position = new Vector3(-width / 2 + i ,0 , -heigth/2 + j);
+                var position = new Vector3(-width / 2 + i ,0 , -heigth/2 + j)*couloirsize;
                 if (cell.HasFlag(WallState.UP))
                 {
                     var topWall = Instantiate(wallprefab, transform) as Transform;
@@ -71,9 +73,5 @@ public class MazeRenderer : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

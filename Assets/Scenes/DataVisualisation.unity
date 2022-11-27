@@ -360,8 +360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 83ce5bec56df1834da3e5847d9accc96, type: 2}
-  path: 0.csv
+  path: 663-Stress-2.csv
   lineRenderer: {fileID: 92461540}
+  Maze: {fileID: 1085677036}
 --- !u!4 &92461542
 Transform:
   m_ObjectHideFlags: 0
@@ -478,6 +479,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3742831002539352278, guid: 1510d45f81ea5344ca80a1fd2885bca1,
+        type: 3}
+      propertyPath: width
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3742831002539352278, guid: 1510d45f81ea5344ca80a1fd2885bca1,
+        type: 3}
+      propertyPath: heigth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3742831002539352279, guid: 1510d45f81ea5344ca80a1fd2885bca1,
         type: 3}
       propertyPath: m_Name
@@ -540,6 +551,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1510d45f81ea5344ca80a1fd2885bca1, type: 3}
+--- !u!1 &1085677036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3742831002539352279, guid: 1510d45f81ea5344ca80a1fd2885bca1,
+    type: 3}
+  m_PrefabInstance: {fileID: 583229899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1243816295
 GameObject:
   m_ObjectHideFlags: 0

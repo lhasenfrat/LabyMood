@@ -21,13 +21,31 @@ public class MainMenu : MonoBehaviour
         } while (generatedIds.Contains(currentId));
         generatedIds.Add(currentId);
         PlayerPrefs.SetInt("currentid",currentId);
+        rnd = new System.Random(currentId);
+
         condition = condition.OrderBy(_ => rnd.Next()).ToList();
 
+        PlayerPrefs.SetString("order", condition[0]+ "-"+condition[1] + "-" + condition[2] );
+
+
     }
+
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("order"))
+        {
+            String order = PlayerPrefs.GetString("order");
+            condition = order.Split("-").ToList();
+
+        }
+    }
+        
     public void StartGame(int number)
     {
         SceneManager.LoadScene("mazegeneration" + condition[number]);
         PlayerPrefs.SetString("condition", condition[number]);
+        PlayerPrefs.SetInt("seed", number);
+
     }
 
     public void QuitGame()

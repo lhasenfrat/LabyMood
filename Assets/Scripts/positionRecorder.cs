@@ -19,8 +19,9 @@ public class positionRecorder : MonoBehaviour
     {
 
         id=PlayerPrefs.GetInt("currentid");
+        int seed = PlayerPrefs.GetInt("seed");
         string condition = PlayerPrefs.GetString("condition");
-        var csvFileName = $"{id}-{condition}.csv";
+        var csvFileName = $"{id}-{condition}-{seed}.csv";
         string basePath = Path.Combine(Application.persistentDataPath, csvFileName);
         writer = new StreamWriter(basePath);
         writer.WriteLine("time;xpos;zpos");
@@ -56,7 +57,11 @@ public class positionRecorder : MonoBehaviour
         writer.Close();
         SceneManager.LoadScene("MainMenu");
     }
-   
+    public void NormalEnd()
+    {
+        available = false;
+        Close();
+    }
 
 }
 
