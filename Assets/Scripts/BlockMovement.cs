@@ -9,7 +9,9 @@ public class BlockMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall") 
         {
-            origin.transform.position+= collision.GetContact(0).normal*0.1f;
+            Vector3 newpos = collision.GetContact(0).normal * 0.1f;
+            newpos.y = 0;
+            origin.transform.position+=newpos;
 
         }
     }
