@@ -48,7 +48,7 @@ Shader "Hidden/Heatmap" {
 			half ri = 2;
 			half hi = 1 - saturate(di / ri);
 
-			h += hi * _Points[i].w;
+			h += hi *  _Points[i].w;
 		}
 
 		// Converts (0-1) according to the heat texture

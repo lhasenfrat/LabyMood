@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &86229308
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c8d8acbec162a1c46992da5afd0e052e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,7 +291,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.11219597
+        value: 0.4285717
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -300,7 +300,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.3941463
+        value: 0.37827334
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 83ce5bec56df1834da3e5847d9accc96, type: 2}
-  path: 5141-Cheer-2.csv
+  path: 5141-Stress-0.csv
   lineRenderer: {fileID: 92461540}
   Maze: {fileID: 1085677036}
 --- !u!4 &92461542
@@ -489,15 +489,35 @@ PrefabInstance:
       propertyPath: heigth
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3742831002539352278, guid: 1510d45f81ea5344ca80a1fd2885bca1,
+        type: 3}
+      propertyPath: couloirsize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3742831002539352279, guid: 1510d45f81ea5344ca80a1fd2885bca1,
         type: 3}
       propertyPath: m_Name
       value: MazeRenderer
       objectReference: {fileID: 0}
+    - target: {fileID: 3742831002539352279, guid: 1510d45f81ea5344ca80a1fd2885bca1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3742831002539352281, guid: 1510d45f81ea5344ca80a1fd2885bca1,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3742831002539352281, guid: 1510d45f81ea5344ca80a1fd2885bca1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3742831002539352281, guid: 1510d45f81ea5344ca80a1fd2885bca1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3742831002539352281, guid: 1510d45f81ea5344ca80a1fd2885bca1,
         type: 3}

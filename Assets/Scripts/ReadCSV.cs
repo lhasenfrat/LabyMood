@@ -36,7 +36,7 @@ public class ReadCSV : MonoBehaviour
     {
         List<Vector4> matrixlist = new List<Vector4>();
 
-        int i = 0;
+        int i = 1;
         int maxi = 0;
         Vector3 lastLine = new Vector3();
         for (int j = 1; j < lineData.Length-1; j++)
@@ -49,7 +49,7 @@ public class ReadCSV : MonoBehaviour
                 {
                     maxi = i;
                 }
-                i = 0;
+                i = 1;
                
             } else
             {
@@ -59,9 +59,10 @@ public class ReadCSV : MonoBehaviour
         }
         for(int j = 0; j < matrixlist.Count; j++)
         {
-            matrixlist[j] = new Vector4(matrixlist[j].x,matrixlist[j].y,matrixlist[j].z, matrixlist[j].w / (float) maxi);;
+            matrixlist[j] = new Vector4(matrixlist[j].x,matrixlist[j].y,matrixlist[j].z, matrixlist[j].w / (float)maxi);
+            
+
         }
-        
         LoadHMMaterial(matrixlist);
     }
 
@@ -69,7 +70,6 @@ public class ReadCSV : MonoBehaviour
     {
         material.SetInt("_Points_Length", list.Count);
         material.SetVectorArray("_Points", list);
-          
     }
 
     void Draw()
